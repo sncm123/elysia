@@ -4,12 +4,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  ...(process.env.NODE_ENV === 'production' 
-    ? {
-        basePath: '/elysia',
-        assetPrefix: '/elysia/',
-      } 
-    : {}),
+  ...(process.env.NODE_ENV === 'production'
+      ? {
+  basePath: '/elysia',
+  assetPrefix: '/elysia/',
+      }
+      : {}),
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -22,4 +22,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig

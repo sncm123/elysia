@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Header from '../../components/Header'
 import Marquee from '@/components/ui/marquee'
-import { cn } from "@/lib/utils"
+import { cn, getFullPath } from "@/lib/utils"
 import TextRevealByWord from "@/components/ui/text-reveal"
 import Image from "next/image"
 import Link from "next/link"
@@ -88,7 +88,7 @@ const DummyContent = () => {
               让科技与艺术完美融合，打造属于你的专属空间。在这里，每一个想法都能成为现实，每一个梦想都值得被实现。
             </p>
             <Image
-              src="https://assets.aceternity.com/macbook.png"
+              src={getFullPath("/images/macbook.png")}
               alt="Macbook mockup"
               height="500"
               width="500"
