@@ -18,6 +18,7 @@ export const cloudProps = {
       alignItems: "center",
       width: "100%",
       height: "100%",
+      padding: "2rem",
     },
   },
   options: {
@@ -33,9 +34,12 @@ export const cloudProps = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    radiusX: 230,
-    radiusY: 230,
-    radiusZ: 230,
+    radiusX: 0.8,
+    radiusY: 0.8,
+    radiusZ: 0.8,
+    stretchX: 1,
+    stretchY: 1,
+    zoom: 0.9,
   },
 } as const;
 
@@ -49,7 +53,7 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
     bgHex,
     fallbackHex,
     minContrastRatio,
-    size: 42,
+    size: 38,
     aProps: {
       href: undefined,
       target: undefined,
@@ -91,7 +95,7 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
 
 export function IconCloudDemo() {
   return (
-    <div className="relative flex w-full h-full items-center justify-center">
+    <div className="relative flex w-full h-full items-center justify-center min-h-[400px]">
       <IconCloud iconSlugs={slugs} />
     </div>
   );

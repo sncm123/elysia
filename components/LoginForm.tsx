@@ -22,8 +22,9 @@ export default function LoginForm({ isLogin, setIsLogin }: LoginFormProps) {
         if (email === '1@example.com' && password === '111111') {
             // 登录成功，存储登录状态
             localStorage.setItem('isLoggedIn', 'true')
-            // 跳转到功能页面
-            router.push('/features')
+            // 根据环境使用不同的路由
+            const basePath = process.env.NODE_ENV === 'production' ? '/elysia' : ''
+            router.push(`${basePath}/features`)
         } else {
             setError('邮箱或密码错误')
         }

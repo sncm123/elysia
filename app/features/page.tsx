@@ -126,9 +126,11 @@ export default function Features() {
     const router = useRouter()
 
     useEffect(() => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn')
-        if (!isLoggedIn) {
-            router.push('/')
+        if (typeof window !== 'undefined') {
+            const isLoggedIn = localStorage.getItem('isLoggedIn')
+            if (!isLoggedIn) {
+                router.push('/')
+            }
         }
     }, [router])
 

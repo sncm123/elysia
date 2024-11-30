@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'standalone',
   images: {
     domains: ['images.unsplash.com', 'avatar.vercel.sh', 'assets.aceternity.com'],
     unoptimized: true,
   },
-  basePath: '/elysia',
+  ...(process.env.NODE_ENV === 'production' ? { basePath: '/elysia' } : {})
 }
 
 module.exports = nextConfig 
