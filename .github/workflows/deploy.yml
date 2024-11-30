@@ -29,22 +29,32 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: List directory contents
-        run: ls -la
-
       - name: Install dependencies
         run: |
-          npm install
+          npm ci
           npm list
 
-      - name: Check Next.js config
-        run: cat next.config.js
+      - name: Check project structure
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Directory contents:"
+          ls -la
+          echo "Node.js version:"
+          node -v
+          echo "npm version:"
+          npm -v
 
       - name: Build project
         run: |
+          echo "Starting build..."
           npm run build
           echo "Build completed"
+          echo "Output directory contents:"
           ls -la out/
+        env:
+          CI: true
+          NODE_ENV: production
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
