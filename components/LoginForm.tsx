@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { getFullPath } from '@/lib/utils'
 
 interface LoginFormProps {
     isLogin: boolean
@@ -22,9 +23,8 @@ export default function LoginForm({ isLogin, setIsLogin }: LoginFormProps) {
         if (email === '1@example.com' && password === '111111') {
             // 登录成功，存储登录状态
             localStorage.setItem('isLoggedIn', 'true')
-            // 根据环境使用不同的路由
-            const basePath = process.env.NODE_ENV === 'production' ? '/elysia' : ''
-            router.push(`${basePath}/features`)
+            // 使用辅助函数获取完整路径
+            window.location.href = getFullPath('/features')
         } else {
             setError('邮箱或密码错误')
         }

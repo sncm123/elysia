@@ -4,14 +4,21 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  ...(process.env.NODE_ENV === 'production' ? { basePath: '/elysia' } : {}),
+  ...(process.env.NODE_ENV === 'production' 
+    ? {
+        basePath: '/elysia',
+        assetPrefix: '/elysia/',
+      } 
+    : {}),
   eslint: {
-    // 在生产构建时忽略 ESLint 错误
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // 在生产构建时忽略 TypeScript 错误
     ignoreBuildErrors: true,
+  },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+    return config;
   },
 }
 

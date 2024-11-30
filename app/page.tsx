@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import LoginForm from '@/components/LoginForm'
 import { IconCloudDemo } from '@/components/ui/icon-cloud'
+import { getFullPath } from '@/lib/utils'
 
 export default function Home() {
   const [isLogin, setIsLogin] = useState(true)
@@ -15,12 +16,11 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       const isLoggedIn = localStorage.getItem('isLoggedIn')
       if (isLoggedIn) {
-        // 根据环境使用不同的路由
-        const basePath = process.env.NODE_ENV === 'production' ? '/elysia' : ''
-        router.push(`${basePath}/features`)
+        // 使用辅助函数获取完整路径
+        window.location.href = getFullPath('/features')
       }
     }
-  }, [router])
+  }, [])
 
   return (
     <div className="flex min-h-screen bg-gray-100">
