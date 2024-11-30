@@ -10,7 +10,7 @@ import {
   SimpleIcon,
 } from "react-icon-cloud";
 
-export const cloudProps: Omit<ICloud, "children"> = {
+export const cloudProps = {
   containerProps: {
     style: {
       display: "flex",
@@ -33,9 +33,11 @@ export const cloudProps: Omit<ICloud, "children"> = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    radius: 230,
+    radiusX: 230,
+    radiusY: 230,
+    radiusZ: 230,
   },
-};
+} as const;
 
 export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
